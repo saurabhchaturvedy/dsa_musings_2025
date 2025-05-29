@@ -79,15 +79,16 @@ public class WordProcess {
                 }
 
                 justifiedLine.append(str);
+
+
+                if (extraSpaces > 0) {
+
+                    justifiedLine.append("-");
+                    extraSpaces--;
+                }
+
+                str = "";
             }
-
-            if (extraSpaces > 0) {
-
-                justifiedLine.append("-");
-                extraSpaces--;
-            }
-
-            str = "";
         }
 
         return justifiedLine.toString();
