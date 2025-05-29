@@ -1,6 +1,6 @@
 
 1. Wrap Lines - Done
-2. Friend Cycle
+2. Friend Cycle - Done
 3. Common Ancestor/Parent Children
 4. Calculator
 5. Domain Visits - Done
