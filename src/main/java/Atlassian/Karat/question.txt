@@ -1,11 +1,11 @@
 
-1. Wrap Lines - Done
+1. Wrap Lines - Done D
 2. Friend Cycle - Done
 3. Common Ancestor/Parent Children
 4. Calculator
 5. Domain Visits - Done
 6. Course Schedule
-7. Badge Access - Done
+7. Badge Access - Done D
 8. Meeting Room/Merge Interval
 9. Task By Level
 10. Find Rectangles

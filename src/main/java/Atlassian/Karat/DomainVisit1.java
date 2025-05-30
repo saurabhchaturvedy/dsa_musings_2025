@@ -6,7 +6,7 @@ import java.util.Map;
 public class DomainVisit1 {
 
 
-    public List<String> subdomainVisits(String[] cpdomains) {
+    public static List<String> subdomainVisits(String[] cpdomains) {
 
         Map<String,Integer> map = new HashMap<>();
 
@@ -71,5 +71,12 @@ public class DomainVisit1 {
 
     public static void main(String[] args) {
 
+
+        String[] str = {"900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"};
+
+
+        List<String> result = subdomainVisits(str);
+
+        System.out.println(result);
     }
 }
