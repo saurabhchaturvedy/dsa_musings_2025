@@ -77,6 +77,26 @@ public class FriendCycle3 {
         };
 
         friendCycle3(employees, friendships);
+
+
+        // same cycle input
+
+        String[] employees2 = {
+                "1, Bill, Engineer",
+                "2, Joe, HR",
+                "3, Sally, Engineer",
+                "4, Richard, Business",
+                "5, Alice, HR"
+        };
+
+        String[] friendships2 = {
+                "1, 2",  // 1 connected to 2
+                "2, 3",  // 2 connected to 3
+                "3, 4",  // 3 connected to 4
+                "4, 5"   // 4 connected to 5
+        };
+
+        friendCycle3(employees2, friendships2);
     }
 }
 
