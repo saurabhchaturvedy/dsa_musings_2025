@@ -8,5 +8,5 @@
 7. Badge Access - Done D
 8. Meeting Room/Merge Interval
 9. Task By Level - Done D
-10. Find Rectangles
+10. Find Rectangles - Done
 11. Word Search - Done D
