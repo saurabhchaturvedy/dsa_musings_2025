@@ -4,7 +4,7 @@
 3. Common Ancestor/Parent Children
 4. Calculator
 5. Domain Visits - Done D
-6. Course Schedule - Done
+6. Course Schedule - Done D
 7. Badge Access - Done D
 8. Meeting Room/Merge Interval
 9. Task By Level - Done D
