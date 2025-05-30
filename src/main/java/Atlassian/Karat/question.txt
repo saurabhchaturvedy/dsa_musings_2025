@@ -7,6 +7,6 @@
 6. Course Schedule
 7. Badge Access - Done D
 8. Meeting Room/Merge Interval
-9. Task By Level
+9. Task By Level - Done D
 10. Find Rectangles
 11. Word Search - Done D
