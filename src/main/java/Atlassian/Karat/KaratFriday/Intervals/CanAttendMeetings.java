@@ -7,7 +7,7 @@ public class CanAttendMeetings {
 
     public static boolean canAttendMeetings(int[][] intervals) {
 
-        if (intervals == null || intervals.length == 0) return false;
+        if (intervals == null || intervals.length == 0) return true;
 
 
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
