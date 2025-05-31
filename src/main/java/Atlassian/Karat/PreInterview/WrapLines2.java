@@ -1,4 +1,4 @@
-package KaratFriday;
+package PreInterview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,12 @@ public class WrapLines2 {
 
     public static List<String> reflowAndJustify(String[] lines, int maxChars) {
 
+
         List<String> result = new ArrayList<>();
         List<String> words = new ArrayList<>();
 
-
         for (String line : lines) {
+
 
             for (String word : line.split(" ")) {
 
@@ -28,20 +29,22 @@ public class WrapLines2 {
         for (String word : words) {
 
 
-            if (currentLength + currentLine.size() + word.length() <= maxChars) {
+            if (currentLine.size() + currentLength + word.length() <= maxChars) {
+
 
                 currentLine.add(word);
                 currentLength += word.length();
 
             } else {
 
+
                 result.add(justify(currentLine, maxChars));
                 currentLine = new ArrayList<>();
                 currentLine.add(word);
                 currentLength = word.length();
             }
-
         }
+
 
         if (!currentLine.isEmpty()) {
 
@@ -72,13 +75,13 @@ public class WrapLines2 {
 
             if (i < words.size() - 1) {
 
+
                 for (int k = 0; k < spacesBetweenWords; k++) {
 
                     str.append("-");
                 }
 
                 justifiedLine.append(str);
-
 
                 if (extraSpaces > 0) {
 
@@ -89,6 +92,7 @@ public class WrapLines2 {
 
             str = new StringBuilder();
         }
+
 
         return justifiedLine.toString();
     }
