@@ -1,9 +1,13 @@
 package PreInterview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WordSearch {
 
 
     static int[][] dir = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    static List<int[]> path = new ArrayList<>();
 
 
     public static boolean exists(char[][] board, String word) {
@@ -12,11 +16,13 @@ public class WordSearch {
         int m = board.length;
         int n = board[0].length;
 
+
+
         for (int i = 0; i < m; i++) {
 
             for (int j = 0; j < n; j++) {
 
-
+                path.clear();
                 if (board[i][j] == word.charAt(0) && find(board, i, j, 0, m, n, word)) {
 
                     return true;
@@ -41,6 +47,10 @@ public class WordSearch {
 
         board[i][j] = '$';
 
+        path.add(new int[]{i,j});
+
+
+
 
         for (int[] d : dir) {
 
@@ -55,6 +65,7 @@ public class WordSearch {
 
 
         board[i][j] = temp;
+        path.remove(path.size()-1);
         return false;
     }
 
@@ -63,13 +74,22 @@ public class WordSearch {
 
 
 
-        char[][] words = {{'A', 'B', 'C', 'E' }, {'S', 'F', 'C', 'S' }, {'A', 'D', 'E', 'E' }};
+        char[][] words = {
+                {'A', 'B', 'C', 'E' },
+                {'S', 'F', 'C', 'S' },
+                {'A', 'D', 'E', 'E' }};
 
         String str = "ABCCED";
 
 
         boolean exists = exists(words, str);
 
-        System.out.println(" word exists = " + exists);
+        System.out.println("Word exists = " + exists);
+        if (exists) {
+            System.out.println("Path coordinates:");
+            for (int[] p : path) {
+                System.out.println("(" + p[0] + ", " + p[1] + ")");
+            }
+        }
     }
 }
