@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AnagramFinder {
 
@@ -21,7 +22,7 @@ public class AnagramFinder {
 
                 String window = main.substring(i, i + length);
                 if (getFreqMap(window).equals(freqMap)) {
-                    System.out.println(" Anagram found : " + getFreqMap(window).keySet());
+                    System.out.println(" Anagram found : " + getFreqMap(window).keySet().stream().map(String::valueOf).collect(Collectors.joining()));
                     return word;
                 }
             }
