@@ -21,6 +21,9 @@ public class TennisCourtAssignment {
             end[i] = bookings.get(i).finishTime;
         }
 
+        Arrays.sort(start);
+        Arrays.sort(end);
+
 
         int usedCourts = 0;
         int maxCourts = 0;
