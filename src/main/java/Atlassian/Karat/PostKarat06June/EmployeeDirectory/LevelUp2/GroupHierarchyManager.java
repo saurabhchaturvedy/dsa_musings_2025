@@ -78,8 +78,9 @@ public class GroupHierarchyManager {
 
             Group child = getOrCreateGroup(childName);
             Group parent = getOrCreateGroup(parentName);
-
-            child.removeParent(parent);
+            if (child != null && parent != null) {
+                child.removeParent(parent);
+            }
         } finally {
             lock.writeLock().unlock();
         }
