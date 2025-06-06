@@ -2,6 +2,10 @@ package PostKarat06June.TennisCourtAssignment;
 
 import java.util.*;
 
+
+// Time complexity O(nlogn)
+// Space Complexity O(n)
+
 public class TennisCourtAssignment {
 
 
