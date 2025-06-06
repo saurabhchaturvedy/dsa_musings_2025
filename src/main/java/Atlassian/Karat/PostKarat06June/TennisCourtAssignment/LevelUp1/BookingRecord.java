@@ -8,11 +8,12 @@ public class BookingRecord {
     int startTime;
     int finishTime;
 
-    public BookingRecord(int finishTime, int startTime, int id) {
-        this.finishTime = finishTime;
-        this.startTime = startTime;
+    public BookingRecord(Integer id, int startTime, int finishTime) {
         this.id = id;
+        this.startTime = startTime;
+        this.finishTime = finishTime;
     }
+
 
     public int getId() {
         return id;
