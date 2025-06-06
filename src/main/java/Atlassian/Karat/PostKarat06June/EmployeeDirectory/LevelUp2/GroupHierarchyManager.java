@@ -102,12 +102,13 @@ public class GroupHierarchyManager {
 
                 Set<Group> visited = new HashSet<>();
                 Queue<Group> queue = new LinkedList<>(employee.getGroups());
+                int level = 0;
 
 
                 while (!queue.isEmpty()) {
 
                     int size = queue.size();
-                    int level = 0;
+
 
                     while (size-- > 0) {
 
