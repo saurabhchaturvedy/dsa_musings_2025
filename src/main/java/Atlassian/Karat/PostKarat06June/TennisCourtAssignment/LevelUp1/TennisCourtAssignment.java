@@ -19,32 +19,62 @@ public class TennisCourtAssignment {
     public static List<Court> assignCourts(List<BookingRecord> bookingRecordList, int fixedMaintenanceTime) {
 
 
-        bookingRecordList.sort(Comparator.comparingInt(x -> x.getStartTime()));
+        bookingRecordList.sort(Comparator.comparingInt(x -> x.startTime));
 
-        PriorityQueue<CourtEndTime> pq = new PriorityQueue<>(Comparator.comparingInt(c -> c.availableTime));
-        List<Court> totalBookedCourts = new ArrayList<>();
+        PriorityQueue<CourtEndTime> pq = new PriorityQueue<>(Comparator.comparing(c -> c.availableTime));
+
+        List<Court> courtsBooked = new ArrayList<>();
         int courtCounter = 0;
 
         for (BookingRecord booking : bookingRecordList) {
 
+
             if (!pq.isEmpty() && pq.peek().availableTime <= booking.getStartTime()) {
+
 
                 CourtEndTime availableCourt = pq.poll();
                 if(availableCourt!=null) {
                     availableCourt.court.bookings.add(booking);
-                    pq.offer(new CourtEndTime(booking.getFinishTime() + fixedMaintenanceTime, availableCourt.court));
+                    pq.add(new CourtEndTime(booking.getFinishTime()+fixedMaintenanceTime, availableCourt.court));
                 }
 
             } else {
 
                 Court newCourt = new Court(++courtCounter);
                 newCourt.bookings.add(booking);
-                totalBookedCourts.add(newCourt);
-                pq.offer(new CourtEndTime(booking.getFinishTime() + fixedMaintenanceTime, newCourt));
+                courtsBooked.add(newCourt);
+                pq.add(new CourtEndTime(booking.getFinishTime()+fixedMaintenanceTime, newCourt));
             }
         }
+        return courtsBooked;
 
-        return totalBookedCourts;
+//
+//        bookingRecordList.sort(Comparator.comparingInt(x -> x.getStartTime()));
+//
+//        PriorityQueue<CourtEndTime> pq = new PriorityQueue<>(Comparator.comparingInt(c -> c.availableTime));
+//        List<Court> totalBookedCourts = new ArrayList<>();
+//        int courtCounter = 0;
+//
+//        for (BookingRecord booking : bookingRecordList) {
+//
+//            if (!pq.isEmpty() && pq.peek().availableTime <= booking.getStartTime()) {
+//
+//                CourtEndTime availableCourt = pq.poll();
+//                if(availableCourt!=null) {
+//                    availableCourt.court.bookings.add(booking);
+//                    pq.offer(new CourtEndTime(booking.getFinishTime() + fixedMaintenanceTime, availableCourt.court));
+//                }
+//
+//            } else {
+//
+//                Court newCourt = new Court(++courtCounter);
+//                newCourt.bookings.add(booking);
+//                totalBookedCourts.add(newCourt);
+//                pq.offer(new CourtEndTime(booking.getFinishTime() + fixedMaintenanceTime, newCourt));
+//            }
+//        }
+//
+//        return totalBookedCourts;
     }
 
     public static void main(String[] args) {
