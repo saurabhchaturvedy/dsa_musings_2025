@@ -26,7 +26,7 @@ public class CommodityPriceTracker {
         }
     }
 
-    public Integer getMaxPrice() {
+    public Integer getMaxCommodityPrice() {
 
         return priceFrequency.isEmpty() ? -1 : priceFrequency.lastKey();
     }
@@ -58,12 +58,12 @@ public class CommodityPriceTracker {
         tracker.insertOrUpdate(1001, 65); // Update existing timestamp
         tracker.insertOrUpdate(1004, 58);
 
-        System.out.println("Max commodity price: " + tracker.getMaxPrice());  // Output: 65
+        System.out.println("Max commodity price: " + tracker.getMaxCommodityPrice());  // Output: 65
 
         tracker.insertOrUpdate(1002, 45); // Update 60 -> 45
-        System.out.println("Max commodity price after update: " + tracker.getMaxPrice());  // Output: 65
+        System.out.println("Max commodity price after update: " + tracker.getMaxCommodityPrice());  // Output: 65
 
         tracker.insertOrUpdate(1001, 40); // Update 65 -> 40
-        System.out.println("Max commodity price after update: " + tracker.getMaxPrice());
+        System.out.println("Max commodity price after update: " + tracker.getMaxCommodityPrice());
     }
 }
