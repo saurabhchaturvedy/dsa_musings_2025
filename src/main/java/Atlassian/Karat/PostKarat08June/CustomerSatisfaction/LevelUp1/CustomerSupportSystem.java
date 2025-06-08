@@ -16,6 +16,7 @@ public class CustomerSupportSystem {
     }
 
 
+    // O(1)
     public void addRating(String agentName, Integer rating) {
 
         if (rating < 1 || rating > 5) {
@@ -28,6 +29,7 @@ public class CustomerSupportSystem {
     }
 
 
+    // O(nlogn)
     public List<String> getAverageRatingView() {
 
 
