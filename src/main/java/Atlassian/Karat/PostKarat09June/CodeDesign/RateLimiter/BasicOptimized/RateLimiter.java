@@ -31,7 +31,7 @@ public class RateLimiter {
 
             long oldestTimestamp = timestamps.peek();
 
-            if (currentTime - oldestTimestamp > windowSizeInMs) {
+            if (currentTime - oldestTimestamp >= windowSizeInMs) {
 
                 timestamps.poll();
             } else {
