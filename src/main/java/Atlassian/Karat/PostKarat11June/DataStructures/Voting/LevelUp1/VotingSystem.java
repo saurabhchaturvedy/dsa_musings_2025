@@ -1,4 +1,4 @@
-package PostKarat11June.DataStructures.Voting;
+package PostKarat11June.DataStructures.Voting.LevelUp1;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class VotingSystem {
                 int point = 0;
                 if (i == 0) point = 3;
                 else if (i == 1) point = 2;
-                else if (i == 2) point = 3;
+                else if (i == 2) point = 1;
 
                 candidateToPointsMap.put(candidate, candidateToPointsMap.getOrDefault(candidate, 0) + point);
             }

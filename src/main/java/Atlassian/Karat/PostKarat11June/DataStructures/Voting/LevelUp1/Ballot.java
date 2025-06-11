@@ -1,4 +1,4 @@
-package PostKarat11June.DataStructures.Voting;
+package PostKarat11June.DataStructures.Voting.LevelUp1;
 
 import java.util.List;
 
