@@ -73,6 +73,8 @@ public class FileCollectionSystem {
 
         List<Collection> collectionList = fileCollectionSystem.topKCollections(3);
 
+        System.out.println(" total file size = "+fileCollectionSystem.totalSize);
+
         for (Collection collection : collectionList) {
             System.out.println(collection.getName() + " " + collection.getTotalSize());
         }
