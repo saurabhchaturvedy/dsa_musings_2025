@@ -1,4 +1,4 @@
-package Post14June.Design.RateLimiter;
+package Post14June.Design.RateLimiter.Basic;
 
 import java.util.*;
 
