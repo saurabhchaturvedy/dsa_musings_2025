@@ -10,11 +10,11 @@ public class SnakeGameImpl implements SnakeGame {
     int boardWidth;
     int boardHeight;
     List<Cell> snake;
-    Direction previousDirection;
+    volatile Direction previousDirection;
     char[][] board;
     int steps = 0;
     Random random;
-    boolean isGameOver;
+    volatile boolean isGameOver;
     Cell foodPosition;
 
 
@@ -31,6 +31,29 @@ public class SnakeGameImpl implements SnakeGame {
         this.board = new char[boardWidth][boardHeight];
         this.previousDirection = Direction.RIGHT;
         this.foodPosition = generateFood();
+    }
+
+
+    public void start() {
+
+
+        Thread thread = new Thread(() -> {
+
+
+            while (!isGameOver) {
+
+                moveSnake(previousDirection);
+                render();
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        thread.start();
     }
 
 
@@ -85,7 +108,7 @@ public class SnakeGameImpl implements SnakeGame {
 
 
     @Override
-    public void moveSnake(Direction direction) {
+    public synchronized void moveSnake(Direction direction) {
 
 
         if (isGameOver)
@@ -122,7 +145,7 @@ public class SnakeGameImpl implements SnakeGame {
     }
 
 
-    public void setDirection(Direction direction) {
+    public synchronized void setDirection(Direction direction) {
 
         if (isValidDirection(direction)) {
 
@@ -208,4 +231,6 @@ public class SnakeGameImpl implements SnakeGame {
 
         return foodPosition;
     }
+
+
 }
