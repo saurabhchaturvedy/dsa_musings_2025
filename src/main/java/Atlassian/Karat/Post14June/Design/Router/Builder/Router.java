@@ -14,8 +14,8 @@ public class Router {
 
     Router(RouteBuilder routeBuilder) {
 
-        this.staticRoutes = new HashMap<>();
-        this.wildCardRoutes = new ArrayList<>();
+        this.staticRoutes = routeBuilder.staticRoutes;
+        this.wildCardRoutes = routeBuilder.wildCardRoutes;
 
     }
 
