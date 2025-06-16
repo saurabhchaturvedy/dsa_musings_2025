@@ -1,7 +1,5 @@
 package PostKarat16June.CustomerSatisfaction.LevelUp4;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -116,13 +114,13 @@ public class CustomerSatisfaction {
     }
 
 
-    public void exportAsJSON(String fileName) throws IOException {
-
-        ObjectMapper mapper = new ObjectMapper();
-        List<AgentMonthlyAverageReport> reports = generateMonthWiseReport();
-        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reports);
-        Files.write(Path.of(fileName), json.getBytes());
-    }
+//    public void exportAsJSON(String fileName) throws IOException {
+//
+//        ObjectMapper mapper = new ObjectMapper();
+//        List<AgentMonthlyAverageReport> reports = generateMonthWiseReport();
+//        String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(reports);
+//        Files.write(Path.of(fileName), json.getBytes());
+//    }
 
 
     public static void main(String[] args) throws IOException {
@@ -139,7 +137,7 @@ public class CustomerSatisfaction {
 
         // Export in all formats
         customerSatisfaction.exportAsCSV("report.csv");
-       customerSatisfaction.exportAsJSON("report.json");
+   //    customerSatisfaction.exportAsJSON("report.json");
        // customerSatisfaction.exportXML("report.xml");
 
         System.out.println("Reports written: report.csv, report.json, report.xml");
