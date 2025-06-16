@@ -1,4 +1,4 @@
-1. Customer Satisfaction
+1. Customer Satisfaction - Done
 2. Rate Limiter
 3. Snake Game
 4. Cost Explorer
