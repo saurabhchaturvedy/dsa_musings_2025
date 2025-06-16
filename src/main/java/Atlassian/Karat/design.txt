@@ -1,5 +1,5 @@
 1. Customer Satisfaction - Done
 2. Rate Limiter
 3. Snake Game
-4. Cost Explorer
-5. Router
+4. Cost Explorer - Done
+5. Router - Done

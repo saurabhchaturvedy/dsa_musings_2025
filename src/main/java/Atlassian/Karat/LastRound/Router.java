@@ -1,4 +1,4 @@
-package Post14June.Design.Router.Variables;
+package LastRound;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -22,27 +22,24 @@ public class Router {
 
         if (staticRoutes.containsKey(path)) {
 
-            new RouteResult(staticRoutes.get(path), Collections.emptyMap());
-        } else {
+            return new RouteResult(staticRoutes.get(path), Collections.emptyMap());
+        }
 
+        for (WildCardRoute wildCardRoute : wildCardRoutes) {
 
-            for (WildCardRoute wildCardRoute : wildCardRoutes) {
+            Map<String, String> variables = wildCardRoute.matchAndExtract(path);
 
+            if (variables != null) {
 
-                Map<String, String> variables = wildCardRoute.matchAndGet(path);
-
-                if (variables != null) {
-
-                    return new RouteResult(wildCardRoute.getResult(), variables);
-                }
+                return new RouteResult(wildCardRoute.getResult(), variables);
             }
         }
 
-        return new RouteResult(" 404 : Not Found", Collections.emptyMap());
+        return new RouteResult("404: Not Found", Collections.emptyMap());
     }
 
 
-    static class RouteResult {
+    private static class RouteResult {
 
         String result;
         Map<String, String> variables;
@@ -70,18 +67,15 @@ public class Router {
     }
 
 
-    static class WildCardRoute {
-
+    private static class WildCardRoute {
 
         String pattern;
         String result;
+        int specificity;
         List<String> variables;
-        Integer specificity;
         Pattern regexPattern;
 
-
-        WildCardRoute(String pattern, String result) {
-
+        public WildCardRoute(String pattern, String result) {
             this.pattern = pattern;
             this.result = result;
             this.variables = new ArrayList<>();
@@ -89,10 +83,7 @@ public class Router {
             this.regexPattern = generateRegexPattern(pattern);
         }
 
-
-        private Pattern generateRegexPattern(String pattern) {
-
-
+        public Pattern generateRegexPattern(String pattern) {
             String[] parts = pattern.split("/");
             StringBuilder sb = new StringBuilder();
 
@@ -110,12 +101,13 @@ public class Router {
                     sb.append(Pattern.quote(part));
                 }
             }
+
             sb.append("/?$");
             return Pattern.compile(sb.toString());
         }
 
 
-        public Map<String, String> matchAndGet(String pattern) {
+        public Map<String, String> matchAndExtract(String pattern) {
 
             Matcher matcher = regexPattern.matcher(pattern);
 
@@ -123,16 +115,15 @@ public class Router {
                 return null;
             }
 
-            Map<String, String> result = new HashMap<>();
+            Map<String, String> map = new HashMap<>();
 
             for (int i = 0; i < variables.size(); i++) {
 
-                result.put(variables.get(i), matcher.group(i + 1));
+                map.put(variables.get(i), matcher.group(i + 1));
             }
 
-            return result;
+            return map;
         }
-
 
         public String getResult() {
             return result;
@@ -146,10 +137,7 @@ public class Router {
             return variables;
         }
 
-
-        private Integer calculateSpecificity(String pattern) {
-
-
+        public int calculateSpecificity(String pattern) {
             String[] segments = pattern.split("/");
             int specificity = 0;
 
@@ -166,11 +154,9 @@ public class Router {
     }
 
 
-    static class RouteBuilder {
-
+    private static class RouteBuilder {
         Map<String, String> staticRoutes = new HashMap<>();
         List<WildCardRoute> wildCardRoutes = new ArrayList<>();
-
 
         public RouteBuilder withRoute(String path, String result) {
 
@@ -186,10 +172,8 @@ public class Router {
         }
 
         public Router build() {
-
             return new Router(this);
         }
-
     }
 
 
@@ -198,7 +182,7 @@ public class Router {
 
         Router router = new Router.RouteBuilder()
                 .withRoute("/foo/:id", "foo_variables").
-                withRoute("/accounts/:accountNumber/status", "accounts/5577/status").build();
+                withRoute("accounts/:accountNumber/status", "accountStatus").build();
 
         System.out.println(router.callRoute("/foo/FGHF0047488"));
         System.out.println(router.callRoute("/accounts/85874873/status"));
