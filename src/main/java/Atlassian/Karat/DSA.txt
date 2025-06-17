@@ -1,6 +1,6 @@
-1. Collection of Files
-2. A Harder Voting App
-3. Popular Content
+1. Collection of Files - Done
+2. A Harder Voting App - Done
+3. Popular Content - Done
 4. Closest Org For Target Employees
 5. Expanding Tennis Club
-6. Commodity Prices
+6. Commodity Prices - Done
